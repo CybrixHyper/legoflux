@@ -48,12 +48,12 @@ LegoFlux occupies the middle ground on purpose:
 |---|---|
 | **9 Built-in Tools** | Read, list, find, edit, write, bash, code_search, web_search, web_fetch |
 | **Streaming Output** | See tokens as they arrive, not after a long wait |
-| **Session Persistence** | Pick up where you left off — JSONL sessions with `/session`, `/session use`, `/session new` |
-| **Cost-Aware Context** | LLM-powered compression with hysteresis trigger; API-calibrated token counting |
-| **Workspace Sandbox** | File access restricted to the project directory — no accidental writes outside |
+| **Session** | Pick up where you left off with `/session`, `/session use`, `/session new` |
+| **Context** | LLM-powered compression with hysteresis trigger; API-calibrated token counting |
+| **Sandbox** | File access restricted to the project directory — no accidental writes outside |
 | **Bash Safety** | Dangerous commands blocked by default; explicit confirmation required |
 | **Drop-in Plugins** | One `.py` file + one config line = new tool |
-| **Multi-Model Profiles** | Define multiple models in YAML, hot-switch with `/model use <profile>` |
+| **Multi-Model** | Define multiple models in YAML, hot-switch with `/model use <profile>` |
 | **Retry with Backoff** | Automatic retries on timeout, rate limit, and server errors |
 
 ---
@@ -61,15 +61,15 @@ LegoFlux occupies the middle ground on purpose:
 ## Comparison
 
 ```text
-+--------------+-------------------+-------------------+--------------------+-------------------+
-| Dimension    | LegoFlux          | Claude Code       | Codex              | OpenCode          |
-+--------------+-------------------+-------------------+--------------------+-------------------+
-| Tool         | 9 built-ins       | Built-ins + MCP   | Built-ins + MCP    | Built-ins + MCP   |
-| Compaction   | Auto + /compact   | Auto + /compact   | /compact + auto    | /compact          |
-| Slash cmds   | Focused           | Rich              | Rich               | Medium            |
-| Web          | Supported         | Supported         | Supported          | Supported         |
-| Sandbox/Perm | Workspace sandbox | allow/ask/deny    | sandbox + approval | allow/ask/deny    |
-+--------------+-------------------+-------------------+--------------------+-------------------+
++--------------+-------------------+-----------------+--------------------+-----------------+
+| Dimension    | LegoFlux          | Claude Code     | Codex              | OpenCode        |
++--------------+-------------------+-----------------+--------------------+-----------------+
+| Tool         | 9 built-ins       | Built-ins + MCP | Built-ins + MCP    | Built-ins + MCP |
+| Compaction   | Auto + /compact   | Auto + /compact | /compact + auto    | /compact        |
+| Slash cmds   | Focused           | Rich            | Rich               | Medium          |
+| Web          | Supported         | Supported       | Supported          | Supported       |
+| Sandbox/Perm | Workspace sandbox | allow/ask/deny  | sandbox + approval | allow/ask/deny  |
++--------------+-------------------+-----------------+--------------------+-----------------+
 ```
 
 ---
