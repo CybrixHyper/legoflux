@@ -1,9 +1,13 @@
-# LegoFlux
+<p align="center">
+  <img src="./docs/images/legoflux_logo.png" alt="LegoFlux logo" width="400" />
+</p>
 
-![Python 3.8+](https://img.shields.io/badge/python-3.8%2B-blue)
-![License MIT](https://img.shields.io/badge/license-MIT-green)
+<h2 align="center">LegoFlux: The Ultra-Lightweight Coding Agent.</h2>
 
-> *"The coding agent scaffold that fits in your head — complete enough to use, simple enough to own."*
+<p align="center">
+  <img alt="Python 3.8+" src="https://img.shields.io/badge/python-3.8%2B-blue" />
+  <img alt="License MIT" src="https://img.shields.io/badge/license-MIT-green" />
+</p>
 
 A **fully-featured coding agent in ~2,200 lines of Python** — read, edit, execute, search, and browse the web, with context compression and workspace sandboxing built in.
 
