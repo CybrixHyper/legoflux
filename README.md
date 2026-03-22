@@ -30,8 +30,6 @@ vim config.yaml                     # fill your API key/base_url
 python agent.py                     # start the coding agent
 ```
 
-> **Tip:** `python chat.py` launches a minimal streaming chat (no tools) for quick Q&A.
-
 ---
 
 ## Why LegoFlux?
