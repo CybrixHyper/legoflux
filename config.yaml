@@ -1,0 +1,46 @@
+model:
+  provider: openai_compatible
+  active: gpt5
+  max_completion_tokens: 8192
+  max_retries: 2
+  retry_backoff_sec: 1.0
+  timeout_sec: 120
+  profiles:
+    gpt5:
+      name: gpt-5
+      api_key: ${OPENAI_API_KEY}
+      base_url: ${OPENAI_BASE_URL}
+    gpt5mini:
+      name: gpt-5-mini
+      api_key: ${OPENAI_API_KEY}
+      base_url: ${OPENAI_BASE_URL}
+
+context:
+  enabled: true
+  context_window_tokens: 128000
+  compress_trigger_tokens: 90000
+  summary_output_tokens: 2000
+  keep_recent_rounds: 2
+
+runtime:
+  session_dir: sessions
+  bash_safe_mode: true
+  bash_timeout_sec: 30
+  max_tool_iterations: 100
+  max_tool_result_chars: 12000
+  workspace_sandbox_enabled: true
+  workspace_root: .
+
+search:
+  iqs_api_key: ${IQS_API_KEY}
+
+tools:
+  - read
+  - list
+  - bash
+  - edit
+  - write
+  - find
+  - code_search
+  - web_search
+  - web_fetch
