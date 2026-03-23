@@ -30,6 +30,8 @@ vim config.yaml                     # fill your API key/base_url
 python agent.py                     # start the coding agent
 ```
 
+Input: Press `Enter` to submit, and press `Ctrl+J` to insert a newline.
+
 ---
 
 ## Why LegoFlux?

@@ -244,9 +244,14 @@ class UserInputReader:
 
         kb = KeyBindings()
 
-        @kb.add("c-j")
+        @kb.add("enter")
         def _submit(event):
             event.current_buffer.validate_and_handle()
+
+        @kb.add("c-j")
+        def _newline(event):
+            # In many terminals, Ctrl+Enter is encoded as Ctrl+J (LF).
+            event.current_buffer.insert_text("\n")
 
         self._prompt_session = PromptSession(
             history=FileHistory(history_path),
