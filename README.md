@@ -15,10 +15,20 @@ A **fully-featured coding agent in ~2,000 lines of Python** — read, edit, exec
 - **Cost-aware context** — Hysteresis-based compression keeps you inside the token budget automatically; API-calibrated counting means no surprise overflows.
 - **Drop-a-`.py` plugins** — Adding a tool is one file (`DEFINITION` + `execute()`) and one line in `config.yaml`. No framework to learn.
 
-<p>
-  <img src="./docs/images/tool_use.gif" width="49%" />
-  <img src="./docs/images/model_switch.gif" width="49%" />
-</p>
+<table style="width: 100%; table-layout: fixed;">
+  <tr>
+    <td align="center" style="width: 25%;"><strong>slash commands</strong></td>
+    <td align="center" style="width: 25%;"><strong>switch between models</strong></td>
+    <td align="center" style="width: 25%;"><strong>search the web</strong></td>
+    <td align="center" style="width: 25%;"><strong>code understanding</strong></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="./docs/images/slash.gif" style="width: 100%; height: 340px; object-fit: contain;" /></td>
+    <td align="center"><img src="./docs/images/model_switch.gif" style="width: 100%; height: 340px; object-fit: contain;" /></td>
+    <td align="center"><img src="./docs/images/web_search.gif" style="width: 100%; height: 340px; object-fit: contain;" /></td>
+    <td align="center"><img src="./docs/images/code.gif" style="width: 100%; height: 340px; object-fit: contain;" /></td>
+  </tr>
+</table>
 
 ---
 
