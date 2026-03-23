@@ -8,7 +8,7 @@ from dataclasses import dataclass
 from core import error_codes as ec
 from core.utils import (
     load_config, get_cfg, build_system_prompt, Session,
-    YOU_LABEL, ASST_LABEL, CONTENT_INDENT, TOOL_LABEL, UserInputReader, is_retryable_llm_error,
+    YOU_LABEL, ASST_LABEL, CONTENT_INDENT, TOOL_LABEL, LABEL_WIDTH, UserInputReader, is_retryable_llm_error,
 )
 from tools import get_tools, process_tool_call
 from core.context import ContextManager
@@ -68,7 +68,7 @@ class Agent:
 
     def _cmd_list_sessions(self):
         session_ids = Session.list_session_ids(self.caller_file)
-        indent = " " * (len(YOU_LABEL) + 2)
+        indent = " " * (LABEL_WIDTH + 2)
         if not session_ids:
             print(f"{indent}[session] no saved sessions")
             return
@@ -94,7 +94,7 @@ class Agent:
         home = os.path.expanduser("~")
         pretty_cwd = cwd.replace(home, "~", 1) if cwd.startswith(home) else cwd
         state = self.model_runtime.current()
-        indent = " " * (len(YOU_LABEL) + 2)
+        indent = " " * (LABEL_WIDTH + 2)
         label_width = 12
 
         def _kv(label, value):
@@ -132,7 +132,7 @@ class Agent:
         _kv("context", "/status, /compact")
 
     def _cmd_model(self, arg):
-        indent = " " * (len(YOU_LABEL) + 2)
+        indent = " " * (LABEL_WIDTH + 2)
         sub = (arg or "").strip()
         current_profile = self.model_runtime.active_profile()
         if not sub:

@@ -8,14 +8,32 @@ import re
 import tempfile
 
 from prompt_toolkit import PromptSession
+from prompt_toolkit.formatted_text import ANSI
 from prompt_toolkit.history import FileHistory
 from prompt_toolkit.key_binding import KeyBindings
 
 
-YOU_LABEL = f"{'You':>9}"
-ASST_LABEL = f"{'Assistant':>9}"
-TOOL_LABEL = f"{'Tool':>9}"
-CONTENT_INDENT = " " * 11
+LABEL_WIDTH = 9
+_ANSI_RESET = "\033[0m"
+_ANSI_BOLD = "\033[1m"
+_ANSI_GREEN = "\033[32m"
+_ANSI_BLUE = "\033[34m"
+_ANSI_PURPLE = "\033[35m"
+_ANSI_ESCAPE_RE = re.compile(r"\x1b\[[0-9;]*m")
+
+
+def _style_label(text: str, color_code: str) -> str:
+    return f"{_ANSI_BOLD}{color_code}{text}{_ANSI_RESET}"
+
+
+def _visible_len(text: str) -> int:
+    return len(_ANSI_ESCAPE_RE.sub("", text))
+
+
+YOU_LABEL = _style_label(f"{'You':>{LABEL_WIDTH}}", _ANSI_GREEN)
+ASST_LABEL = _style_label(f"{'Assistant':>{LABEL_WIDTH}}", _ANSI_BLUE)
+TOOL_LABEL = _style_label(f"{'Tool':>{LABEL_WIDTH}}", _ANSI_PURPLE)
+CONTENT_INDENT = " " * (LABEL_WIDTH + 2)
 
 
 _CONFIG_CACHE = None
@@ -260,8 +278,8 @@ class UserInputReader:
         )
 
     def read(self, prompt_text):
-        continuation = " " * len(prompt_text)
+        continuation = " " * _visible_len(prompt_text)
         return self._prompt_session.prompt(
-            prompt_text,
+            ANSI(prompt_text),
             prompt_continuation=lambda _width, _line, _is_soft_wrap: continuation,
         )

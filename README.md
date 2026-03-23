@@ -150,6 +150,7 @@ tools:
 ```
 
 `web_search` uses the Alibaba Cloud IQS LiteAdvanced search engine: [Aliyun docs](https://help.aliyun.com/document_detail/2974627.html?spm=a2c4g.11186623.0.0.43434e8auGlgWu).
+`web_search` and `web_fetch` share a common IQS helper module: `tools/_iqs_common.py`.
 
 `read` supports `mode`:
 
@@ -176,7 +177,8 @@ legoflux/
 ├── tools/                # One file per tool
 │   ├── read.py  list.py  find.py  edit.py  write.py
 │   ├── bash.py  code_search.py
-│   └── web_search.py  web_fetch.py
+│   ├── web_search.py  web_fetch.py
+│   └── _iqs_common.py  # Shared IQS request/validation helpers
 └── sessions/             # Auto-created session storage
 ```
 
