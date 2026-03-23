@@ -9,7 +9,7 @@
   <img alt="License MIT" src="https://img.shields.io/badge/license-MIT-green" />
 </p>
 
-A **fully-featured coding agent in ~2,200 lines of Python** — read, edit, execute, search, and browse the web, with context compression and workspace sandboxing built in.
+A **fully-featured coding agent in ~2,000 lines of Python** — read, edit, execute, search, and browse the web, with context compression and workspace sandboxing built in.
 
 - **Complete agent, zero magic** — 9 tools, session persistence, streaming, context management. All in readable Python you can audit in an afternoon.
 - **Cost-aware context** — Hysteresis-based compression keeps you inside the token budget automatically; API-calibrated counting means no surprise overflows.
@@ -146,6 +146,8 @@ tools:
   - web_search
   - web_fetch
 ```
+
+`web_search` uses the Alibaba Cloud IQS LiteAdvanced search engine: [Aliyun docs](https://help.aliyun.com/document_detail/2974627.html?spm=a2c4g.11186623.0.0.43434e8auGlgWu).
 
 `read` supports `mode`:
 
