@@ -5,7 +5,7 @@
 <h2 align="center">LegoFlux: The Ultra-Lightweight Coding Agent.</h2>
 
 <p align="center">
-  <img alt="Python 3.8+" src="https://img.shields.io/badge/python-3.8%2B-blue" />
+  <img alt="Python 3.11+" src="https://img.shields.io/badge/python-3.11%2B-blue" />
   <img alt="License MIT" src="https://img.shields.io/badge/license-MIT-green" />
 </p>
 
@@ -182,7 +182,7 @@ legoflux/
 
 ## Requirements
 
-- Python 3.8+
+- Python 3.11+
 - [ripgrep](https://github.com/BurntSushi/ripgrep) (`brew install ripgrep`) — for `code_search`
 - An OpenAI-compatible API endpoint
 
