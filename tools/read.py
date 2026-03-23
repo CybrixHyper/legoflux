@@ -65,9 +65,34 @@ def _is_structure_line(line: str) -> bool:
 
 def execute(arguments):
     path = arguments["path"]
-    offset = arguments.get("offset", 1)
-    limit = arguments.get("limit", 200)
+    raw_offset = arguments.get("offset", 1)
+    raw_limit = arguments.get("limit", 200)
     mode = str(arguments.get("mode", "full")).strip().lower()
+    try:
+        offset = int(raw_offset)
+        limit = int(raw_limit)
+    except (TypeError, ValueError):
+        return ToolResult.error(
+            ec.INVALID_ARGS,
+            "offset and limit must be integers",
+            path=path,
+            offset=raw_offset,
+            limit=raw_limit,
+        )
+    if offset <= 0:
+        return ToolResult.error(
+            ec.INVALID_ARGS,
+            "offset must be > 0",
+            path=path,
+            offset=offset,
+        )
+    if limit <= 0:
+        return ToolResult.error(
+            ec.INVALID_ARGS,
+            "limit must be > 0",
+            path=path,
+            limit=limit,
+        )
     if mode not in {"full", "structure"}:
         return ToolResult.error(
             ec.INVALID_ARGS,
@@ -97,14 +122,14 @@ def execute(arguments):
     try:
         with open(resolved_path, "r") as f:
             selected = []
-            start = max(1, int(offset))
+            start = offset
             for line_no, line in enumerate(f, start=1):
                 if line_no < start:
                     continue
                 if mode == "structure" and not _is_structure_line(line):
                     continue
                 selected.append((line_no, line))
-                if len(selected) >= int(limit):
+                if len(selected) >= limit:
                     break
     except UnicodeDecodeError:
         return ToolResult.error(
@@ -141,7 +166,7 @@ def execute(arguments):
     first = selected[0][0]
     scope = "structure lines" if mode == "structure" else "lines"
 
-    if len(selected) >= int(limit):
+    if len(selected) >= limit:
         result += f"\n\n[Showing {scope} {first}-{end}. Use offset={end+1} to continue reading.]"
     else:
         result += f"\n\n[Showing {scope} {first}-{end}]"

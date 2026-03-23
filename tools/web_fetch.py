@@ -33,9 +33,35 @@ ENDPOINT = "https://cloud-iqs.aliyuncs.com/readpage/basic"
 
 
 def execute(arguments):
-    url = arguments["url"]
-    max_chars = arguments.get("max_chars", 8000)
-    offset = arguments.get("offset", 0)
+    raw_url = arguments["url"]
+    raw_max_chars = arguments.get("max_chars", 8000)
+    raw_offset = arguments.get("offset", 0)
+    url = str(raw_url or "").strip()
+    try:
+        max_chars = int(raw_max_chars)
+        offset = int(raw_offset)
+    except (TypeError, ValueError):
+        return ToolResult.error(
+            ec.INVALID_ARGS,
+            "max_chars and offset must be integers",
+            url=raw_url,
+            max_chars=raw_max_chars,
+            offset=raw_offset,
+        )
+    if max_chars <= 0:
+        return ToolResult.error(
+            ec.INVALID_ARGS,
+            "max_chars must be > 0",
+            url=url,
+            max_chars=max_chars,
+        )
+    if offset < 0:
+        return ToolResult.error(
+            ec.INVALID_ARGS,
+            "offset must be >= 0",
+            url=url,
+            offset=offset,
+        )
 
     if not url.startswith(("http://", "https://")):
         return ToolResult.error(
