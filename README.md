@@ -23,10 +23,10 @@ A **fully-featured coding agent in ~2,000 lines of Python** — read, edit, exec
     <td align="center" style="width: 25%;"><strong>code understanding</strong></td>
   </tr>
   <tr>
-    <td align="center"><img src="./docs/images/slash.gif" style="width: 100%; height: 340px; object-fit: contain;" /></td>
-    <td align="center"><img src="./docs/images/model_switch.gif" style="width: 100%; height: 340px; object-fit: contain;" /></td>
-    <td align="center"><img src="./docs/images/web_search.gif" style="width: 100%; height: 340px; object-fit: contain;" /></td>
-    <td align="center"><img src="./docs/images/code.gif" style="width: 100%; height: 340px; object-fit: contain;" /></td>
+    <td align="center"><img src="./docs/images/slash.gif" style="width: 100%; height: 340px; object-fit: cover;" /></td>
+    <td align="center"><img src="./docs/images/model_switch.gif" style="width: 100%; height: 340px; object-fit: cover;" /></td>
+    <td align="center"><img src="./docs/images/web_search.gif" style="width: 100%; height: 340px; object-fit: cover;" /></td>
+    <td align="center"><img src="./docs/images/code.gif" style="width: 100%; height: 340px; object-fit: cover;" /></td>
   </tr>
 </table>
 
